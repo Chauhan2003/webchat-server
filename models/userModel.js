@@ -24,6 +24,12 @@ const userModel = new mongoose.Schema(
       type: String,
       default: "Available",
     },
+    state: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
     profilePhoto: {
       type: String,
       default: "",

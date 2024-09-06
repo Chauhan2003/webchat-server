@@ -3,8 +3,9 @@ import { compareString, generateToken, hashString } from "../utils/common.js";
 import { v2 as cloudinary } from "cloudinary";
 
 export const register = async (req, res) => {
-  const { fullName, email, username, password, profilePhoto } = req.body;
-  if (!fullName || !email || !username || !password) {
+  const { fullName, email, username, password, profilePhoto, state, city } =
+    req.body;
+  if (!fullName || !email || !username || !password || !state || !city) {
     return res.status(400).json({ message: "Please fill in all fields!" });
   }
 
@@ -44,6 +45,8 @@ export const register = async (req, res) => {
       fullName,
       email,
       username,
+      state,
+      city,
       password: hashedPassword,
       profilePhoto: profilePhotoUrl,
     });
@@ -55,6 +58,8 @@ export const register = async (req, res) => {
       username: newUser.username,
       profilePhoto: newUser.profilePhoto,
       about: newUser.about,
+      state: newUser.state,
+      city: newUser.city,
     };
 
     const token = generateToken(newUser._id);

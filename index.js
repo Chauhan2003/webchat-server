@@ -30,7 +30,8 @@ app.use(express.json({ limit: "10mb" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chitchat-gagan.netlify.app",
+    // origin: "https://chitchat-gagan.netlify.app",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
